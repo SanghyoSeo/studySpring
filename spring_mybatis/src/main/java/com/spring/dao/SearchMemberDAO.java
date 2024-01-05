@@ -10,5 +10,5 @@ public interface SearchMemberDAO extends MemberDAO {
 
 	List<MemberVO> selectSearchMemberList(PageMaker pagemaker) throws SQLException;
 	
-	
+	int selectSearchMemberListCount(PageMaker pageMaker) throws SQLException;
 }

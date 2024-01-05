@@ -10,7 +10,7 @@ import com.spring.command.PageMaker;
 import com.spring.dto.MemberVO;
 
 public class SearchMemberDAOImpl extends MemberDAOImpl
-								 implements SearchMemberDAO {
+								 implements SearchMemberDAO{
 
 	private SqlSession sqlSession;
 	public void setSqlSession(SqlSession session) {
@@ -20,12 +20,19 @@ public class SearchMemberDAOImpl extends MemberDAOImpl
 	@Override
 	public List<MemberVO> selectSearchMemberList(PageMaker pageMaker) throws SQLException {
 		int offset = pageMaker.getStartRow();
-		int limit  = pageMaker.getPerPageNum();
-		RowBounds rows = new RowBounds(offset, limit);
+		int limit = pageMaker.getPerPageNum();
+		RowBounds rows = new RowBounds(offset,limit);
 		
 		List<MemberVO> memberList 
-		= sqlSession.selectList("Member-Mapper.selectSearchMemberList", pageMaker, rows);
+		= sqlSession.selectList("Member-Mapper.selectSearchMemberList",pageMaker,rows);
 		return memberList;
 	}
+
+	@Override
+	public int selectSearchMemberListCount(PageMaker pageMaker) throws SQLException {
+		return sqlSession.selectOne("Member-Mapper.selectSearchMemberListCount",pageMaker);
+	}
+
+
 
 }

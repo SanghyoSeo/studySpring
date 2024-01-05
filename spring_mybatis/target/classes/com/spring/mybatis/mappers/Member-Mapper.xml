@@ -7,16 +7,16 @@
 	<!-- 동적퀴리 -->
 	<sql id="search">
 		<if test="searchType == 'i'.toString()">
-			where id like '%#{keyword}%'
+			where id like '%' || #{keyword} ||'%'
 		</if>
 		<if test="searchType == 'n'.toString()">
-			where name like '%#{keyword}%'
+			where name like '%' || #{keyword} ||'%'
 		</if>
 		<if test="searchType == 'e'.toString()">
-			where email like '%#{keyword}%'
+			where email like '%' || #{keyword} ||'%'
 		</if>
 		<if test="searchType == 'p'.toString()">
-			where phone like '%#{keyword}%'
+			where phone like '%' || #{keyword} ||'%'
 		</if>
 	</sql>
 	<select id="selectSearchMemberList" parameterType="pageMaker" resultType="member">

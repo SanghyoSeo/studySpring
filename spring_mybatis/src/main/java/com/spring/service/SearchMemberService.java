@@ -9,5 +9,4 @@ import com.spring.dto.MemberVO;
 public interface SearchMemberService extends MemberService {
 
 	List<MemberVO> searchList(PageMaker pageMaker) throws SQLException;
-	
 }
