@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <!--
 This is a starter template page. Use this page to start your new project from
@@ -89,7 +91,19 @@ scratch. This page gets rid of all links and provides the needed markup only.
 		                	<th>전화번호</th>
 		                	<th>등록날짜</th> <!-- yyyy-MM-dd  -->
 		               	</tr>
-		              
+		              	<c:forEach var="member" items="${memberList}" >
+			              	<tr>
+			              		<td></td>
+			              		<td>${member.id }</td>
+			              		<td>${member.pwd }</td>
+			              		<td>${member.name }</td>
+			              		<td>${member.email }</td>
+			              		<td>${member.phone }</td>
+			              		<td>
+			              			<fmt:formatDate value="${member.regDate }" pattern="yyyy-MM-dd"/>
+			              		</td>
+			              	</tr>
+			            </c:forEach>
 		            </table>
     		     </div> <!-- col-sm-12 -->
     	       </div> <!-- row -->

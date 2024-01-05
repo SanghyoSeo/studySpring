@@ -6,8 +6,8 @@ import java.util.List;
 import com.spring.dao.MemberDAO;
 import com.spring.dto.MemberVO;
 
-public class MemberServiceImpl implements MemberService {
-	
+public class MemberServiceImpl implements MemberService{
+
 	private MemberDAO memberDAO;
 	public void setMemberDAO(MemberDAO memberDAO) {
 		this.memberDAO = memberDAO;
@@ -38,7 +38,6 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public void remove(String id) throws SQLException {
 		memberDAO.deleteMember(id);
-		
 	}
 
 }

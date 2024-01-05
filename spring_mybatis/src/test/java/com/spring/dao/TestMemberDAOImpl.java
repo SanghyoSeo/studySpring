@@ -13,6 +13,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.spring.dto.MemberVO;
 
+
+
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("classpath:com/spring/context/root-context.xml")
 @Transactional
@@ -22,22 +24,23 @@ public class TestMemberDAOImpl {
 	private MemberDAO memberDAO;
 	
 	@Test
-	public void testSelectMemberList() throws Exception {
+	public void testSelectMemberList()throws Exception{
 		List<MemberVO> memberList = memberDAO.selectList();
 		Assert.assertEquals(7, memberList.size());
 	}
 	
 	@Test
-	public void testSelectMemberById() throws Exception {
+	public void testSelectMemberById()throws Exception{
 		String testId = "mimi";
 		MemberVO member = memberDAO.selectMemberById(testId);
 		Assert.assertEquals(member.getId(), testId);
 	}
 	
+	
 	String insertID = "koko";
 	@Test
 	@Rollback
-	public void testInsertMember() throws Exception {
+	public void testInsertMember() throws Exception{
 		MemberVO member = new MemberVO();
 		member.setId(insertID);
 		member.setPwd("koko");
@@ -53,16 +56,16 @@ public class TestMemberDAOImpl {
 		MemberVO getMem = memberDAO.selectMemberById(member.getId());
 		
 		Assert.assertEquals(member.getId(), getMem.getId());
+		
 	}
-	
 	
 	@Test
 	@Rollback
-	public void testUpdateMember() throws Exception {
+	public void testUpdateMember()throws Exception{
 		String testID = "mimi";
-		String testName = "lalala";
+		String testName ="lalala";
 		MemberVO targetMember = memberDAO.selectMemberById(testID);
-		
+		Assert.assertNotNull(targetMember);
 		Assert.assertNotEquals(testName, targetMember.getName());
 		
 		targetMember.setName(testName);
@@ -74,14 +77,16 @@ public class TestMemberDAOImpl {
 		Assert.assertEquals(testName, getMem.getName());
 	}
 	
+	
+	
 	@Test
 	@Rollback
-	public void testdeleteMember() throws Exception {
+	public void testDeleteMember()throws Exception{
 		testInsertMember();
 		MemberVO targetMember = memberDAO.selectMemberById(insertID);
 		
 		Assert.assertEquals(insertID, targetMember.getId());
-	
+		
 		memberDAO.deleteMember(insertID);
 		
 		MemberVO deleteMember = memberDAO.selectMemberById(insertID);
@@ -89,3 +94,9 @@ public class TestMemberDAOImpl {
 		Assert.assertNull(deleteMember);
 	}
 }
+
+
+
+
+
+

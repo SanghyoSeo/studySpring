@@ -7,10 +7,10 @@ import org.apache.ibatis.session.SqlSession;
 
 import com.spring.dto.MemberVO;
 
-public class MemberDAOImpl implements MemberDAO {
+public class MemberDAOImpl implements MemberDAO{
 
 	private SqlSession session;
-	public void setSession(SqlSession session) {
+	public void setSqlSession(SqlSession session){
 		this.session = session;
 	}
 	
@@ -21,24 +21,24 @@ public class MemberDAOImpl implements MemberDAO {
 
 	@Override
 	public MemberVO selectMemberById(String id) throws SQLException {
-		return session.selectOne("Member-Mapper.selectMemberById", id);
+		return session.selectOne("Member-Mapper.selectMemberById",id);
 	}
 
 	@Override
 	public void insertMember(MemberVO member) throws SQLException {
-		session.insert("Member-Mapper.insertMember", member);
+		session.insert("Member-Mapper.insertMember",member);
 		
 	}
 
 	@Override
 	public void updateMember(MemberVO member) throws SQLException {
-		session.update("Member-Mapper.updateMember", member);
+		session.update("Member-Mapper.updateMember",member);
 		
 	}
 
 	@Override
 	public void deleteMember(String id) throws SQLException {
-		session.delete("Member-Mapper.deleteMember", id);
+		session.delete("Member-Mapper.deleteMember",id);
 		
 	}
 

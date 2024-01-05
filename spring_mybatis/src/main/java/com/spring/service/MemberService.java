@@ -7,10 +7,14 @@ import com.spring.dto.MemberVO;
 
 public interface MemberService {
 	
-	List<MemberVO> list() throws SQLException;
+	List<MemberVO> list()throws SQLException;
 	MemberVO detail(String id) throws SQLException;
 	void regist(MemberVO member) throws SQLException;
 	void modify(MemberVO member) throws SQLException;
 	void remove(String id) throws SQLException;
-
 }
+
+
+
+
+
