@@ -8,7 +8,7 @@ import com.spring.dao.SearchMemberDAO;
 import com.spring.dto.MemberVO;
 
 public class SearchMemberServiceImpl extends MemberServiceImpl
-									implements SearchMemberService{
+									 implements SearchMemberService{
 	
 	private SearchMemberDAO searchMemberDAO;
 	public void setSearchMemberDAO(SearchMemberDAO searchMemberDAO) {
