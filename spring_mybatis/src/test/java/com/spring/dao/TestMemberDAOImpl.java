@@ -13,8 +13,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.spring.dto.MemberVO;
 
-
-
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("classpath:com/spring/context/root-context.xml")
 @Transactional
