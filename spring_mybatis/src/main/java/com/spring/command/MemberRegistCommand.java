@@ -1,6 +1,10 @@
 package com.spring.command;
 
+import java.util.Date;
+
 import org.springframework.web.multipart.MultipartFile;
+
+import com.spring.dto.MemberVO;
 
 public class MemberRegistCommand {
 
@@ -10,7 +14,7 @@ public class MemberRegistCommand {
 	private String[] phone;
 	private String email;
 	private MultipartFile picture;
-	private String aythority;
+	private String authority;
 	
 	
 	public String getId() {
@@ -49,12 +53,28 @@ public class MemberRegistCommand {
 	public void setPicture(MultipartFile picture) {
 		this.picture = picture;
 	}
-	public String getAythority() {
-		return aythority;
+	public String getAuthority() {
+		return authority;
 	}
-	public void setAythority(String aythority) {
-		this.aythority = aythority;
+	public void setAuthority(String aythority) {
+		this.authority = aythority;
 	}
 	
-	
+	public MemberVO toMemberVO() {
+		MemberVO member = new MemberVO();
+		member.setEmail(email);
+		member.setAuthority(authority);
+		member.setEnabled(1);
+		member.setId(id);
+		member.setName(name);
+		member.setPwd(pwd);
+		member.setRegDate(new Date());
+		String phoneTemp = "";
+		for(String p : phone) {
+			phoneTemp += p;
+		}
+		member.setPhone(phoneTemp);
+		
+		return member;
+	}
 }

@@ -9,8 +9,27 @@ function OpenWindow(UrlStr, WinTitle, WinWidth, WinHeight) {
 	win.focus() ; 
 }
 
-// 팝업창 닫기
-function closeWindow() {
-	window.opener.location.reload(true);
+
+//팝업창 닫기
+function CloseWindow(){
+	
+	window.opener.location.reload(true);		
 	window.close();
 }
+
+//사용자 사진 출력
+function MemberPictureThumb(contextPath){
+ for(let target of document.querySelectorAll('.manPicture')){
+       let id= target.getAttribute('data-id');
+       
+       target.style.backgroundImage="url('"+contextPath+"/member/getPicture.do?id="+id+"')";
+       target.style.backgroundRepeat="no-repeat";
+       target.style.backgroundSize="cover";
+       target.style.backgroundPosition="center";
+ }  
+}
+
+
+
+
+
